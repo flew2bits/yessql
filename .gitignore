@@ -24,3 +24,4 @@ project.lock.json
 .vs/
 .build/
 .testPublish/ 
+/test/YesSql.Tests/Properties/launchSettings.json

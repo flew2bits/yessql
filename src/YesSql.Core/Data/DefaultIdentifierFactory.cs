@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 
 namespace YesSql.Data
@@ -25,7 +25,7 @@ namespace YesSql.Data
             var setType = typeof(Action<,>).MakeGenericType(new[] { tContainer, tProperty });
 
             var getter = propertyInfo.GetGetMethod().CreateDelegate(getType);
-            var setter = propertyInfo.GetSetMethod().CreateDelegate(setType);
+            var setter = propertyInfo.GetSetMethod(true).CreateDelegate(setType);
 
             var accessorType = typeof(IdAccessor<,>).MakeGenericType(tContainer, tProperty);
 
