@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +8,11 @@ namespace YesSql.Indexes
 {
     public abstract class IndexProvider<T> : IIndexProvider
     {
-        public abstract void Describe(DescribeContext<T> context);
+        public abstract void Describe(DescribeContext<T> context, IReadOnlySession session);
 
-        void IIndexProvider.Describe(IDescriptor context)
+        void IIndexProvider.Describe(IDescriptor context, IReadOnlySession session)
         {
-            Describe((DescribeContext<T>)context);
+            Describe((DescribeContext<T>)context, session);
         }
 
         public string CollectionName { get; set; }

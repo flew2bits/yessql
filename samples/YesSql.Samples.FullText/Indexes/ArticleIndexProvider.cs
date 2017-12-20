@@ -7,7 +7,7 @@ namespace YesSql.Samples.FullText.Indexes
 {
     public class ArticleIndexProvider : IndexProvider<Article>
     {
-        public override void Describe(DescribeContext<Article> context)
+        public override void Describe(DescribeContext<Article> context, IReadOnlySession session)
         {
             var tokenizer = new WhiteSpaceTokenizer();
             var filter = new StopWordFilter();

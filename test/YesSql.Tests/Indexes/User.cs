@@ -20,7 +20,7 @@ namespace YesSql.Tests.Indexes
     public class UserByRoleNameIndexProvider : IndexProvider<User>
     {
 
-        public override void Describe(DescribeContext<User> context)
+        public override void Describe(DescribeContext<User> context, IReadOnlySession session)
         {
             context.For<UserByRoleNameIndex, string>()
                 .Map(user => user.RoleNames.Select(x => new UserByRoleNameIndex

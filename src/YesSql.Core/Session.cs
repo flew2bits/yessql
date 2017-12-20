@@ -623,7 +623,7 @@ namespace YesSql
 
         private void MapNew(Document document, object obj)
         {
-            foreach (var descriptor in _store.Describe(obj.GetType()))
+            foreach (var descriptor in _store.Describe(obj.GetType(), this))
             {
                 var mapped = descriptor.Map(obj);
 
@@ -668,7 +668,7 @@ namespace YesSql
         /// </summary>
         private void MapDeleted(Document document, object obj)
         {
-            foreach (var descriptor in _store.Describe(obj.GetType()))
+            foreach (var descriptor in _store.Describe(obj.GetType(), this))
             {
                 // If the mapped elements are not meant to be reduced, delete
                 if (descriptor.Reduce == null || descriptor.Delete == null)

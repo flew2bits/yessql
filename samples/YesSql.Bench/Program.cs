@@ -88,7 +88,7 @@ namespace Bench
 
     public class UserIndexProvider : IndexProvider<User>
     {
-        public override void Describe(DescribeContext<User> context)
+        public override void Describe(DescribeContext<User> context, IReadOnlySession session)
         {
             context.For<UserByName>()
                 .Map(user => new UserByName { Name = user.Name, Adult = user.Adult, Age = user.Age });

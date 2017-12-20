@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using YesSql.Indexes;
 using YesSql.Tests.Models;
 
@@ -12,7 +12,7 @@ namespace YesSql.Tests.Indexes
 
     public class ArticleBydPublishedDateProvider : IndexProvider<Article>
     {
-        public override void Describe(DescribeContext<Article> context)
+        public override void Describe(DescribeContext<Article> context, IReadOnlySession session)
         {
             context
                 .For<ArticleByPublishedDate>()

@@ -9,7 +9,7 @@ namespace YesSql
     /// <summary>
     /// Represents a connection to the document store.
     /// </summary>
-    public interface ISession : IDisposable
+    public interface ISession : IReadOnlySession, IDisposable
     {
         /// <summary>
         /// Saves a new or existing object to the store, and updates
@@ -21,12 +21,6 @@ namespace YesSql
         /// Deletes an object from the store and its indexes.
         /// </summary>
         void Delete(object item);
-
-        /// <summary>
-        /// Loads objects by id
-        /// </summary>
-        /// <returns></returns>
-        Task<IEnumerable<T>> GetAsync<T>(int[] ids) where T : class;
 
         IQuery Query();
 
@@ -55,7 +49,7 @@ namespace YesSql
 
     public static class SessionExtensions
     {
-        public async static Task<T> GetAsync<T>(this ISession session, int id) where T : class
+        public async static Task<T> GetAsync<T>(this IReadOnlySession session, int id) where T : class
         {
             return (await session.GetAsync<T>(new[] { id })).FirstOrDefault();
         }

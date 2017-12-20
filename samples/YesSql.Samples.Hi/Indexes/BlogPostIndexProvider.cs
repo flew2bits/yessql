@@ -6,7 +6,7 @@ namespace YesSql.Samples.Hi.Indexes
 {
     public class BlogPostIndexProvider : IndexProvider<BlogPost>
     {
-        public override void Describe(DescribeContext<BlogPost> context)
+        public override void Describe(DescribeContext<BlogPost> context, IReadOnlySession session)
         {
             // for each BlogPost, create a BlogPostByAuthor index
             context.For<BlogPostByAuthor>()

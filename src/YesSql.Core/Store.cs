@@ -185,7 +185,7 @@ namespace YesSql
         /// <summary>
         /// Returns the available indexers for a specified type
         /// </summary>
-        public IEnumerable<IndexDescriptor> Describe(Type target)
+        public IEnumerable<IndexDescriptor> Describe(Type target, IReadOnlySession session)
         {
             if (target == null)
             {
@@ -206,7 +206,7 @@ namespace YesSql
                     if (provider.ForType().IsAssignableFrom(target) &&
                         String.Equals(key.Collection, provider.CollectionName, StringComparison.OrdinalIgnoreCase))
                     {
-                        provider.Describe(context);
+                        provider.Describe(context, session);
                     }
                 }
 

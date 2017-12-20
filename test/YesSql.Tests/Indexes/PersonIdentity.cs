@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using YesSql.Indexes;
 using YesSql.Tests.Models;
 
@@ -16,7 +16,7 @@ namespace YesSql.Tests.Indexes
 
     public class PersonIdentitiesIndexProvider : IndexProvider<Person>
     {
-        public override void Describe(DescribeContext<Person> context)
+        public override void Describe(DescribeContext<Person> context, IReadOnlySession session)
         {
             context
                 .For<PersonIdentity>()
